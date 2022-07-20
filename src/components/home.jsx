@@ -1,0 +1,44 @@
+import React, { Component } from "react";
+import PageHeader from "./pageHeader";
+import Card from "./card";
+class Home extends Component {
+
+
+  state = {
+    image: {
+      url: "https://picsum.photos/1200/700",
+      alt: "Random image",
+    },
+    array: Array(10)
+    //Array(10).fill(2)
+    //Array.from(Array(10), (x, index) => index + 1)
+  };
+
+  colorHeadLine = {
+    color: "red",
+    fontSize: "2rem",
+  };
+
+  cbClick() {
+    alert("opaa, that worked!");
+  }
+
+  render() {
+    const { url, alt } = this.state.image;
+    const array = [...this.state.array];
+    if(!array.length) return <p>No Items in the Array</p>
+    return (
+      <div className="container">
+        <PageHeader />
+        <Card />
+        {array.map((item, index, array) => {
+          console.log(array);
+          return <div key={index}>{item}</div>;
+        })}
+        <button onClick={this.cbClick} className="btn btn-primary"> Func In CC </button>
+      </div>
+    );
+  }
+}
+
+export default Home;
